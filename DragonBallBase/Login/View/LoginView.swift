@@ -50,6 +50,7 @@ class LoginView: UIView {
         let result = UILabel()
         //result.backgroundColor = .red
         result.numberOfLines = 0
+        result.textAlignment = .center
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }()
@@ -75,7 +76,6 @@ class LoginView: UIView {
             loginLabel.topAnchor.constraint(equalTo: topAnchor, constant: 150),
             loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
             loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
-            //loginLabel.heightAnchor.constraint(equalToConstant: 40),
             
             emailField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 8),
             emailField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
