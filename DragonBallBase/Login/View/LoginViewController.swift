@@ -16,17 +16,16 @@ class LoginViewController: UIViewController {
     var loginButton: UIButton?
     var resultLabel: UILabel?
     
-    //var viewModel:
+    var viewModel: LoginViewModel?
     
     override func loadView() {
         let loginView = LoginView()
         
-        emailText = loginView.getEmail()
-        
-        /*emailText = loginView.email
-        passText = loginView.password
+        // Nose si esto es una mala práctica, pero funciona sin los gets
+        emailText = loginView.emailField
+        passText = loginView.passwordField
         loginButton = loginView.loginButton
-        resultLabel = loginView.resultLabel*/
+        resultLabel = loginView.resultLabel
         
         view = loginView
     }
@@ -34,15 +33,18 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //viewModel = HeroeListViewModel()
+        viewModel = LoginViewModel()
         
         loginButton?.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
-        
     }
     
     @objc
-    func loginTapped(sender: UIButton) {
-        
+    func loginTapped(sender: UIButton) {        
+        viewModel?.login(email: emailText?.text, password: passText?.text){ response in
+            DispatchQueue.main.async {
+                self.resultLabel?.text = response
+            }
+        }
     }
     
     

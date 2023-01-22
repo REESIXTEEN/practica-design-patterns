@@ -33,6 +33,8 @@ class LoginView: UIView {
         passText.placeholder = "password"
         passText.backgroundColor = .systemGray5
         passText.borderStyle = .roundedRect
+        passText.isSecureTextEntry = true
+        passText.textContentType = .password
         passText.translatesAutoresizingMaskIntoConstraints = false
         return passText
     }()
@@ -47,6 +49,7 @@ class LoginView: UIView {
     let resultLabel = {
         let result = UILabel()
         //result.backgroundColor = .red
+        result.numberOfLines = 0
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }()
